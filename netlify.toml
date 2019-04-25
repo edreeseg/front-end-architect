@@ -1,0 +1,4 @@
+[build]
+    base = "immun-tracker"
+    publish = "immun-tracker/build"
+    command = "yarn build"
