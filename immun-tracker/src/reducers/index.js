@@ -9,7 +9,6 @@
   
 
 const initialState = {
-  friends: [],
   isloggingIn: false,
   error: '',
   fetchingData: false,
