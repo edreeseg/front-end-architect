@@ -4,7 +4,7 @@ export const ACCOUNTCREATE_START = 'ACCOUNTCREATE_START'
 export const ACCOUNTCREATE_SUCCESS = 'ACCOUNTCREATE_SUCCESS'
 export const ACCOUNTCREATE_FAILURE = 'ACCOUNTCREATE_FAILURE'
 
-export const createPatientAccount = (credentials) => dispatch => {
+export const createProviderAccount = (credentials) => dispatch => {
     dispatch({ type: ACCOUNTCREATE_START })
     axios
       .post('http://localhost:5000/api/registration', credentials)
