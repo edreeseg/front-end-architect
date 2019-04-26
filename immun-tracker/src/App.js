@@ -4,8 +4,8 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 
 
 //Components
-import PatientLogin from "./components/Login/PatientLogin";
-import AdminLogin from './components/Login/AdminLogin'
+import Login from "./components/Login/Login";
+
 
 
 class App extends Component {
@@ -14,8 +14,8 @@ class App extends Component {
       <Router>
         <div>
           
-          <Route path="/patientlogin" exact component={PatientLogin} />
-          <Route path="/adminlogin" exact component={AdminLogin} />
+          <Route path="/login" exact component={Login} />
+          
         </div>
       </Router>
     );

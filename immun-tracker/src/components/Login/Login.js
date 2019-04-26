@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 // import Loader from "react-loader-spinner";
 // import { login } from  '../../actions'
-
+import { LoginWrapper } from './LoginWrapper'
 
 
 class Login extends React.Component {
@@ -32,8 +32,9 @@ class Login extends React.Component {
 
   render() {
     return (
+      <LoginWrapper>
       <div className="main">
-        <p className="sign">Patient Login</p>
+        <p className="sign"> Waiting Room </p>
         <form onSubmit={this.handleLogin}>
           <input
             type="text"
@@ -59,11 +60,9 @@ class Login extends React.Component {
              <a className ='helpLink' href='#'>Forgot Password?</a> 
              <a className ='helpLink' href='#'>Sign Up</a>
          </div>
-         <div className="PageSwitcher">
-                <NavLink to="/adminlogin" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item">Admin</NavLink>
-                <NavLink exact to="/patientlogin" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item">Patient</NavLink>
-              </div>
+        
       </div>
+      </LoginWrapper>
     );
   }
 }
