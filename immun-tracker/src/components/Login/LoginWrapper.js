@@ -16,10 +16,11 @@ export const LoginWrapper = styled.div`
 
   .sign {
     padding-top: 40px;
-    color: #df5ba3;
+    color: #ffd740;
     font-family: "Ubuntu", sans-serif;
     font-weight: bold;
     font-size: 23px;
+    font-size: -webkit-xxx-large;
   }
 
   .input {
@@ -51,7 +52,7 @@ export const LoginWrapper = styled.div`
     cursor: pointer;
     border-radius: 5em;
     color: #fff;
-    background: linear-gradient(to right, #ff6868, #df5ba3);
+    background: linear-gradient(to right, #80d6ff, #0077c2);
     border: 0;
     padding-left: 40px;
     padding-right: 40px;
@@ -62,6 +63,8 @@ export const LoginWrapper = styled.div`
     font-size: 13px;
     box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
   }
+
+ 
 
   .forgot {
     text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
@@ -75,11 +78,11 @@ export const LoginWrapper = styled.div`
 
   .helpLink {
     text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
-    color: #e1bee7;
+    color: #0077c2;
     text-decoration: none;
   }
 
   .helpLink:hover {
-    color: #bf2fd8;
+    color: #c8a600;
   }
 `;

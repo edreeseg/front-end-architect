@@ -1,9 +1,20 @@
 import React from "react";
+
+//Redux
 import { connect } from "react-redux";
+
+//React Router
 import { Link } from 'react-router-dom'
+
 // import Loader from "react-loader-spinner";
 // import { login } from  '../../actions'
-import { LoginWrapper } from './LoginWrapper'
+
+//Styled Component
+import { LoginWrapper } from './LoginWrapper';
+
+//Font Awesome 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserLock } from '@fortawesome/free-solid-svg-icons'
 
 
 class Login extends React.Component {
@@ -34,7 +45,7 @@ class Login extends React.Component {
     return (
       <LoginWrapper>
       <div className="main">
-        <p className="sign"> Waiting Room </p>
+        <p className="sign"> <FontAwesomeIcon icon={faUserLock} /></p>
         <form onSubmit={this.handleLogin}>
           <input
             type="text"
