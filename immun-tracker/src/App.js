@@ -5,7 +5,6 @@ import MedicalRegistrationView from './components/registration/MedicalRegistrati
 function App() {
   return (
     <div>
-      Hello
       <MedicalRegistrationView />
     </div>
   );

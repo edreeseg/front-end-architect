@@ -1,11 +1,12 @@
 import React from "react";
-import { NavLink } from 'react-router-dom'
+//import { NavLink } from 'react-router-dom'
 import { connect } from "react-redux";
-import { createProviderAccount } from '../../actions/registrationActions'
+//import { createProviderAccount } from '../../actions/registrationActions'
 
 class MedicalRegistrationView extends React.Component {
     state = {
       credentials: {
+        fullName: "",
         username: "",
         password: "",
         //verification:"", ex. licensure, 
@@ -37,15 +38,32 @@ class MedicalRegistrationView extends React.Component {
   
     render() {
       return (
-        <div>
+        <div className="container">
+          <div className="header">
+            <h1>Medical Provider Registration</h1>
+          </div>
+
+          <input
+              className = "input"
+              type = "text"
+              onChange={this.handleInput}
+              placeholder="Full Name"
+              value={this.state.fullName}
+              name="fullName"
+            />
+          
           <form onSubmit={this.handleSubmit}>
             <input
+              className = "input"
+              type = "text"
               onChange={this.handleInput}
               placeholder="Username"
               value={this.state.username}
               name="username"
             />
             <input
+              className = "input"
+              type = "text"
               onChange={this.handleInput}
               placeholder="Password"
               value={this.state.password}
@@ -53,6 +71,10 @@ class MedicalRegistrationView extends React.Component {
             />
             
             <button type="submit">Create Account</button>
+            
+            <div className = "alreadyRegistered">
+              <p>Already Signed Up?</p><a className="redirectLogin" href="#"> Login</a>
+            </div>
           </form>
         </div>
       );
@@ -69,6 +91,6 @@ class MedicalRegistrationView extends React.Component {
   
   export default connect(
     mapStateToProps,
-    { createProviderAccount }
+   // { createProviderAccount }
   )(MedicalRegistrationView);
   
