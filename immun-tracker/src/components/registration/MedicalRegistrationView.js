@@ -1,6 +1,7 @@
 import React from "react";
 //import { NavLink } from 'react-router-dom'
 import { connect } from "react-redux";
+import { MedicalRegistrationWrapper } from "./MedicalRegistrationWrapper";
 //import { createProviderAccount } from '../../actions/registrationActions'
 
 class MedicalRegistrationView extends React.Component {
@@ -38,12 +39,17 @@ class MedicalRegistrationView extends React.Component {
   
     render() {
       return (
+        <MedicalRegistrationWrapper>
         <div className="container">
           <div className="header">
             <h1>Medical Provider Registration</h1>
           </div>
 
-          <input
+          <div>
+           <form className="inputContainer" 
+           onSubmit={this.handleSubmit}>
+           
+           <input
               className = "input"
               type = "text"
               onChange={this.handleInput}
@@ -51,8 +57,7 @@ class MedicalRegistrationView extends React.Component {
               value={this.state.fullName}
               name="fullName"
             />
-          
-          <form onSubmit={this.handleSubmit}>
+                   
             <input
               className = "input"
               type = "text"
@@ -69,14 +74,20 @@ class MedicalRegistrationView extends React.Component {
               value={this.state.password}
               name="password"
             />
+            <div  
+              className="submit" onClick={this.handleSubmit} >
+              Create Account
+            </div>
+            </form>
             
-            <button type="submit">Create Account</button>
+            </div>
             
             <div className = "alreadyRegistered">
-              <p>Already Signed Up?</p><a className="redirectLogin" href="#"> Login</a>
+              <p>Already Registered? </p>
+              <a className="redirectLogin" href="#"> Login</a>
             </div>
-          </form>
         </div>
+        </MedicalRegistrationWrapper>
       );
     }
   }
