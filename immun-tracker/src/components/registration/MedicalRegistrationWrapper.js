@@ -60,5 +60,6 @@ export const MedicalRegistrationWrapper = styled.div`
         justify-content: center;
         align-items: center;
         font-family: "Ubuntu", sans-serif;
+        font-size 12px;
     }
 `;
