@@ -11,7 +11,11 @@
 import {
   ACCOUNTCREATE_START,
   ACCOUNTCREATE_SUCCESS,
-  ACCOUNTCREATE_FAILURE
+  ACCOUNTCREATE_FAILURE,
+
+  PATIENTACCOUNTCREATE_START,
+  PATIENTACCOUNTCREATE_SUCCESS,
+  PATIENTACCOUNTCREATE_FAILURE
 } from "../actions/registrationActions";
 
 const initialState = {
@@ -22,7 +26,9 @@ const initialState = {
   fetchingData: false,
   // From registration
   userListMedical: [],
-  addingMedicalUser: false
+  addingMedicalUser: false,
+  userListPatient: [],
+  addingPatient: false
 };
 
 const friendsReducer = (state = initialState, action) => {
@@ -56,6 +62,24 @@ const friendsReducer = (state = initialState, action) => {
       return {
         ...state,
         addingMedicalUser: false,
+        error: action.payload
+      };
+
+      case PATIENTACCOUNTCREATE_START:
+      return {
+        ...state,
+        addingPatient: true
+      };
+    case PATIENTACCOUNTCREATE_SUCCESS:
+      return {
+        ...state,
+        addingPatient: false,
+        userListPatient: [...action.payload]
+      };
+    case PATIENTACCOUNTCREATE_FAILURE:
+      return {
+        ...state,
+        addingPatient: false,
         error: action.payload
       };
     default:
