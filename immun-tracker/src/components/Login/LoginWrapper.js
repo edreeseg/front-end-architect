@@ -48,6 +48,12 @@ export const LoginWrapper = styled.div`
     background: white;
   }
 
+   .help-block{
+    color: red;
+    text-align: center;
+    padding-bottom: 5px;
+   }
+
   .submit {
     cursor: pointer;
     border-radius: 5em;
