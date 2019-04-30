@@ -2,7 +2,8 @@ import React from "react";
 //import { NavLink } from 'react-router-dom'
 import { connect } from "react-redux";
 import { MedicalRegistrationWrapper } from "./MedicalRegistrationWrapper";
-//import { createProviderAccount } from '../../actions/registrationActions'
+//import { createProviderAccount } from '../../actions/registrationActions';
+import { Link } from 'react-router-dom';
 
 class MedicalRegistrationView extends React.Component {
     state = {
@@ -84,7 +85,7 @@ class MedicalRegistrationView extends React.Component {
             
             <div className = "alreadyRegistered">
               <p>Already Registered? </p>
-              <a className="redirectLogin" href="#"> Login</a>
+              <Link className="redirectLogin" to="/login"> Login</Link>
             </div>
             <div className = "alreadyRegistered">
               <p>New Patient? </p>
