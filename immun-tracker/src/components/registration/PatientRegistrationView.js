@@ -2,7 +2,7 @@ import React from "react";
 //import { NavLink } from 'react-router-dom'
 import { connect } from "react-redux";
 import { PatientRegistrationWrapper } from "./PatientRegistrationWrapper";
-//import { createProviderAccount } from '../../actions/registrationActions'
+//import { createPatientAccount } from '../../actions/registrationActions'
 
 class PatientRegistrationView extends React.Component {
     state = {
@@ -43,7 +43,7 @@ class PatientRegistrationView extends React.Component {
         <PatientRegistrationWrapper>
         <div className="container">
           <div className="header">
-            <h1>Medical Provider Registration</h1>
+            <h1> New Patient Registration</h1>
           </div>
 
           <div>
@@ -69,7 +69,7 @@ class PatientRegistrationView extends React.Component {
             />
             <input
               className = "input"
-              type = "text"
+              type = "password"
               onChange={this.handleInput}
               placeholder="Password"
               value={this.state.password}

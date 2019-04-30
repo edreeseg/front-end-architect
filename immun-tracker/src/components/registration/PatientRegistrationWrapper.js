@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const MedicalRegistrationWrapper = styled.div`
+export const PatientRegistrationWrapper = styled.div`
     .container{
         display: flex;
         flex-direction: column;
@@ -12,7 +12,7 @@ export const MedicalRegistrationWrapper = styled.div`
         
         margin: 3em auto;
         border-radius: 1.5em;
-        box-shadow: 0px 10px 20px 2px #4d4dff;
+        box-shadow: 0px 10px 20px 2px #004d00;
     }
 
     .inputContainer{
@@ -24,7 +24,7 @@ export const MedicalRegistrationWrapper = styled.div`
     h1{
         margin-top: 60px;
         margin-bottom: 20px;
-        color: #6666ff;
+        color: #004d00;
         font-family: "Ubuntu", sans-serif;
     }
     
@@ -32,7 +32,7 @@ export const MedicalRegistrationWrapper = styled.div`
         font-weight: 600;
         font-size: 14px;
         margin: 20px;
-        color:#000080;
+        color:#004d00;
         background: #e6e6ff;
         padding: 10px 20px;
         border: none;
@@ -50,7 +50,7 @@ export const MedicalRegistrationWrapper = styled.div`
         box-sizing: border-box;
         border: 2px solid #ccccff
         color:#e6e6ff;
-        background: #1a1aff;
+        background: #004d00;
         padding: 10px 30px;
         margin-top: 20px;
     }
@@ -64,16 +64,14 @@ export const MedicalRegistrationWrapper = styled.div`
     }
 
     .alreadyRegistered:hover{
-        color: #1a1aff;
+        color: #004d00;
     }
 
     a{
         color: #1a1aff;
     }
-    
+
     a:hover{
         color: #e6b800;
     }
-
-    
 `;
