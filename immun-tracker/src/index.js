@@ -22,7 +22,9 @@ import App from "./App";
 //Redux Dev Tools 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ;
 
-const store = createStore(reducer,  composeEnhancers(applyMiddleware(thunk)));
+const store = createStore(reducer,  
+//  composeEnhancers
+(applyMiddleware(thunk)));
 
 ReactDOM.render(
   <Provider store = { store }>
