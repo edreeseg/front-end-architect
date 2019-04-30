@@ -85,7 +85,7 @@ class Login extends React.Component {
             <a className="helpLink" href="#">
               Forgot Password?
             </a>
-            <Link className="helpLink" href="#">
+            <Link className="helpLink" to="/register-patient">
               Sign Up
             </Link>
           </div>

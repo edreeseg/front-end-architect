@@ -14,6 +14,9 @@ import "./index.css";
 //Components
 import App from "./App";
 
+//reactstrap
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 //dummy starter reducer 
 // function reducer () {
 //     state: {}
@@ -23,8 +26,7 @@ import App from "./App";
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ;
 
 const store = createStore(reducer,  
-//  composeEnhancers
-(applyMiddleware(thunk)));
+ composeEnhancers((applyMiddleware(thunk))));
 
 ReactDOM.render(
   <Provider store = { store }>
