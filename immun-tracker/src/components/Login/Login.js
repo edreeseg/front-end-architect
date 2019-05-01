@@ -40,7 +40,7 @@ class Login extends React.Component {
     if(this.state.credentials.username && this.state.credentials.password){
     this.props
       .login(this.state.credentials)
-      .then(() => this.props.history.push("/protected"));
+      .then(() => this.props.history.push("/patienthub"));
     }
   };
 
