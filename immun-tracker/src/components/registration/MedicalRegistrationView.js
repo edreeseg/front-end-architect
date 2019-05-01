@@ -69,7 +69,7 @@ class MedicalRegistrationView extends React.Component {
             />
             <input
               className = "input"
-              type = "text"
+              type = "password"
               onChange={this.handleInput}
               placeholder="Password"
               value={this.state.password}

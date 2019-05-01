@@ -11,6 +11,7 @@ export const PATIENTACCOUNTCREATE_FAILURE = 'PATIENTACCOUNTCREATE_FAILURE'
 export const createProviderAccount = (credentials) => dispatch => {
     dispatch({ type: ACCOUNTCREATE_START })
     axios
+      //update with correct url
       .post('http://localhost:5000/api/registration', credentials)
       .then(res => dispatch({ type: ACCOUNTCREATE_SUCCESS, payload: res.data.payload }))
       .catch(err => dispatch({ type: ACCOUNTCREATE_FAILURE, payload: err }));
@@ -19,6 +20,7 @@ export const createProviderAccount = (credentials) => dispatch => {
 export const createPatientAccount = (credentials) => dispatch => {
   dispatch({ type: PATIENTACCOUNTCREATE_START })
   axios
+    // update with correct url
     .post('http://localhost:5000/api/registration', credentials)
     .then(res => dispatch({ type: PATIENTACCOUNTCREATE_SUCCESS, payload: res.data.payload }))
     .catch(err => dispatch({ type: PATIENTACCOUNTCREATE_FAILURE, payload: err }));
