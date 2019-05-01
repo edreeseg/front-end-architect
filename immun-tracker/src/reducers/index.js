@@ -18,6 +18,13 @@ import {
   PATIENTACCOUNTCREATE_FAILURE
 } from "../actions/registrationActions";
 
+// Granting Access to Providers
+import{
+  GETPROVIDERLIST_START,
+  GETPROVIDERLIST_SUCCESS,
+  GETPROVIDERLIST_FAILURE
+} from '../actions/grantAccessActions'
+
 const initialState = {
   // Common
   error: "",
@@ -28,7 +35,10 @@ const initialState = {
   userListMedical: [],
   addingMedicalUser: false,
   userListPatient: [],
-  addingPatient: false
+  addingPatient: false,
+  // from granting access
+  providerList:[],
+  fetchingProviders: false
 };
 
 const friendsReducer = (state = initialState, action) => {
@@ -64,7 +74,7 @@ const friendsReducer = (state = initialState, action) => {
         addingMedicalUser: false,
         error: action.payload
       };
-
+//~~~~~~~~~~~~~~~~PATIENT ONBOARDING~~~~~~~~~~~~~~~~~~~`
       case PATIENTACCOUNTCREATE_START:
       return {
         ...state,
@@ -80,6 +90,24 @@ const friendsReducer = (state = initialState, action) => {
       return {
         ...state,
         addingPatient: false,
+        error: action.payload
+      };
+//~~~~~~~~~~~~~~~~Granting Access ~~~~~~~~~~~~~~~~~~~~~~~~~~
+      case GETPROVIDERLIST_START:
+      return {
+        ...state,
+        fetchingProviders: true
+      };
+    case GETPROVIDERLIST_SUCCESS:
+      return {
+        ...state,
+        fetchingProviders: false,
+        providerList: [...action.payload]
+      };
+    case GETPROVIDERLIST_FAILURE:
+      return {
+        ...state,
+        fetchingProviders: false,
         error: action.payload
       };
     default:
