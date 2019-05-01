@@ -7,7 +7,7 @@ export const login = creds => dispatch => {
     dispatch({ type: LOGIN_START });
   
     return axios
-      .post("http://localhost:5000/api/login", creds)
+      .post("https://infinite-castle-77802.herokuapp.com/login", creds)
       .then(res => {
         localStorage.setItem("token", res.data.payload);
         dispatch({ type: LOGIN_RESOLVED });
