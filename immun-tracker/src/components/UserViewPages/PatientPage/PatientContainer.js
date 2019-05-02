@@ -1,7 +1,7 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import PatientNav from "./PatientNav";
-import Footer from './PatientFooter'
-
+import Footer from "./PatientFooter";
 
 //Redux
 import { connect } from "react-redux";
@@ -17,7 +17,7 @@ import {
   CardSubtitle
 } from "reactstrap";
 
-import { PatientWrapper } from './PNavbarWrapper'
+import { PatientWrapper } from "./PNavbarWrapper";
 
 class PatientHome extends Component {
   render() {
@@ -33,7 +33,9 @@ class PatientHome extends Component {
           </p>
           <hr className="my-2" />
           <p className="lead">
-            <Button color="primary">Add Patient</Button>
+            <Link to="/addpatient">
+              <Button color="primary">Add Patient</Button>
+            </Link>
           </p>
         </Jumbotron>
         <div className="cardContainer">
@@ -53,8 +55,8 @@ class PatientHome extends Component {
                 The outbreak is now the worst in decades. Children under age 5
                 account for about half of the cases.
               </CardText>
-              <form  action="https://www.nytimes.com/2019/04/29/health/measles-outbreak-cdc.html">
-                <input className='button' type="submit" value="Learn More" />
+              <form action="https://www.nytimes.com/2019/04/29/health/measles-outbreak-cdc.html">
+                <input className="button" type="submit" value="Learn More" />
               </form>
             </CardBody>
           </Card>
@@ -73,8 +75,8 @@ class PatientHome extends Component {
                 preventable diseases like the measles, which is at a high in the
                 state.
               </CardText>
-              <form  action="https://patch.com/michigan/across-mi/michigan-promotes-immunizations-week-measles-outbreak-soars">
-                <input className='button' type="submit" value="Learn More" />
+              <form action="https://patch.com/michigan/across-mi/michigan-promotes-immunizations-week-measles-outbreak-soars">
+                <input className="button" type="submit" value="Learn More" />
               </form>
             </CardBody>
           </Card>
@@ -92,13 +94,13 @@ class PatientHome extends Component {
                 As Artificial Intelligence Moves Into Medicine, The Human Touch
                 Could Be A Casualty
               </CardText>
-              <form  action="https://www.npr.org/sections/health-shots/2019/04/30/718413798/as-artificial-intelligence-moves-into-medicine-the-human-touch-could-be-a-casual">
-                <input className='button' type="submit" value="Learn More" />
+              <form action="https://www.npr.org/sections/health-shots/2019/04/30/718413798/as-artificial-intelligence-moves-into-medicine-the-human-touch-could-be-a-casual">
+                <input className="button" type="submit" value="Learn More" />
               </form>
             </CardBody>
           </Card>
         </div>
-        <Footer/>
+        <Footer />
       </PatientWrapper>
     );
   }
@@ -111,6 +113,6 @@ const mapStateToProps = state => {
 };
 
 export default connect(
-  mapStateToProps,
-    // 
+  mapStateToProps
+  //
 )(PatientHome);
