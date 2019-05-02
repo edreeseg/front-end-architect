@@ -50,12 +50,11 @@ export class AddPatientView extends React.Component {
       });
   };
 
-  isFieldFilled = fieldName => {
-    return Boolean(this.state[fieldName]);
-  };
-
   showErrorMessage = fieldName => {
-    return this.state.blurred[fieldName] && !this.isFieldFilled(fieldName);
+    const isFieldFilled = fieldName => {
+      return Boolean(this.state[fieldName]);
+    };
+    return this.state.blurred[fieldName] && !isFieldFilled(fieldName);
   };
 
   isDateValid = () => {
