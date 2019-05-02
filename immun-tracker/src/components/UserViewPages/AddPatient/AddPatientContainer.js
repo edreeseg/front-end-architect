@@ -38,7 +38,11 @@ export class AddPatientView extends React.Component {
                     value={lastName}
                     onChange={this.handleInputChange}
                 />
-                <DatePicker selected={birthDate} onChange={this.changeDate} />
+                <DatePicker 
+                    selected={birthDate} // this works like the 'value' in input
+                    onChange={this.changeDate} // accepts onChange function which
+                    // would update state
+                    />
             </div>
         );
     }    
