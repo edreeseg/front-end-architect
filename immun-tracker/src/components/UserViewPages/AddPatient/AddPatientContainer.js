@@ -51,14 +51,18 @@ export class AddPatientView extends React.Component {
   };
 
   isFieldFilled = fieldName => {
+    // Returns true if input has any value other than an empty string
     return Boolean(this.state[fieldName]);
   };
 
   showErrorMessage = fieldName => {
+    // Returns true if user removed focus from input and the input is NOT filled
     return this.state.blurred[fieldName] && !this.isFieldFilled(fieldName);
   };
 
-  isDateValid = () => {
+  isBirthDateValid = () => {
+    // Returns true if birthdate is not in the future. Can remove once time travel
+    // is confirmed.
     const today = new Date().getTime();
     const selectedDate = this.state.birthDate.getTime();
     // Date is valid if it's today or in the past (future dates are not OK)
@@ -66,11 +70,12 @@ export class AddPatientView extends React.Component {
   };
 
   disableSubmitButton = () => {
-    // Returns booleans based if fields are filled in and date is valid
+    // Returns true if any input is not filled in or date selected is invalid
+    // Meant to go to 'disabled' attribute on the submit button
     return !(
       this.isFieldFilled("firstName") &&
       this.isFieldFilled("lastName") &&
-      this.isDateValid()
+      this.isBirthDateValid()
     );
   };
 
@@ -130,7 +135,7 @@ export class AddPatientView extends React.Component {
             onChange={this.changeDate} // accepts onChange function which
             // would update state
           />
-          <div>{!this.isDateValid() ? "Date invalid!" : null}</div>
+          <div>{!this.isBirthDateValid() ? "Date invalid!" : null}</div>
           <button disabled={this.disableSubmitButton()} type="submit">Submit</button>
         </form>
       </div>
