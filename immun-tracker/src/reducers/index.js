@@ -22,7 +22,13 @@ import {
 import{
   GETPROVIDERLIST_START,
   GETPROVIDERLIST_SUCCESS,
-  GETPROVIDERLIST_FAILURE
+  GETPROVIDERLIST_FAILURE,
+  INITIATE_CONSENT,
+  CONSENT_ACKNOWLEDGED,
+  CONSENT_REJECTED,
+  INITIATE_REMOVE_CONSENT,
+  CONSENT_REMOVAL_ACKNOWLEDGED,
+  CONSENT_REMOVAL_REJECTED
 } from '../actions/grantAccessActions'
 
 const initialState = {
@@ -38,7 +44,10 @@ const initialState = {
   addingPatient: false,
   // from granting access
   providerList:[],
-  fetchingProviders: false
+  fetchingProviders: false,
+  authorizedProviderList:[],
+  givingAuthorization: false,
+  removingAuthorization: false,
 };
 
 const friendsReducer = (state = initialState, action) => {
@@ -93,7 +102,9 @@ const friendsReducer = (state = initialState, action) => {
         error: action.payload
       };
 //~~~~~~~~~~~~~~~~Granting Access ~~~~~~~~~~~~~~~~~~~~~~~~~~
-      case GETPROVIDERLIST_START:
+    //getting list of providers to give authorizaton to
+    
+    case GETPROVIDERLIST_START:
       return {
         ...state,
         fetchingProviders: true
@@ -102,7 +113,7 @@ const friendsReducer = (state = initialState, action) => {
       return {
         ...state,
         fetchingProviders: false,
-        providerList: [...action.payload]
+        providerList: [...this.providerList, ...action.payload]
       };
     case GETPROVIDERLIST_FAILURE:
       return {
@@ -110,6 +121,49 @@ const friendsReducer = (state = initialState, action) => {
         fetchingProviders: false,
         error: action.payload
       };
+    
+    //giving consent tp modify info
+      
+    case INITIATE_CONSENT:
+      return {
+        ...state,
+        givingAuthorization: true
+      };
+    case CONSENT_ACKNOWLEDGED:
+      return {
+        ...state,
+        givingAuthorization: false,
+        authorizedProviderList: [...this.authorizedProviderList, ...action.payload]
+      };
+    case CONSENT_REJECTED:
+      return {
+        ...state,
+        givingAuthorization: false,
+        error: action.payload
+      };
+    
+      //removing consent tp modify info
+    
+    case INITIATE_REMOVE_CONSENT:
+      return {
+      ...state,
+      removingAuthorization: true
+    };
+    case CONSENT_REMOVAL_ACKNOWLEDGED:
+      return {
+      ...state,
+      removingAuthorization: false,
+      authorizedProviderList: [ ...action.payload]
+      //if authorizedproviderlist includes 
+      //action.payload(a provider id) then 
+      //remove from array???????????
+    };
+    case CONSENT_REMOVAL_REJECTED:
+      return {
+      ...state,
+      removingAuthorization: false,
+      error: action.payload
+    };
     default:
       return state;
   }
