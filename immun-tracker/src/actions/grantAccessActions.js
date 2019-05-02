@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~getting list of providers
+
 export const GETPROVIDERLIST_START = 'GETPROVIDERLIST_START'
 export const GETPROVIDERLIST_SUCCESS = 'GETPROVIDERLIST_SUCCESS'
 export const GETPROVIDERLIST_FAILURE = 'GETPROVIDERLIST_FAILURE'
@@ -11,4 +13,34 @@ export const fetchProviderList = () => dispatch => {
       .get('http://localhost:5000/api/providers')
       .then(res => dispatch({ type: GETPROVIDERLIST_SUCCESS, payload: res.data.payload }))
       .catch(err => dispatch({ type: GETPROVIDERLIST_FAILURE, payload: err }));
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`giving consent to modify patient information
+
+export const INITIATE_CONSENT= 'INITIATE_CONSENT'
+export const CONSENT_ACKNOWLEDGED = 'CONSENT_ACKNOWLEDGED'
+export const CONSENT_REJECTED = 'CONSENT_REJECTED'
+
+export const giveProviderConsent = (providerId) => dispatch => {
+    dispatch({ type: INITIATE_CONSENT })
+    axios
+      //res.data.payload???
+      .post('http://localhost:5000/api/patients/:id/consent', providerId)
+      .then(res => dispatch({ type: CONSENT_ACKNOWLEDGED, payload: res.data.payload }))
+      .catch(err => dispatch({ type: CONSENT_REJECTED, payload: err }));
+}
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~`removing authorization from a provider to modify patient information
+
+export const INITIATE_REMOVE_CONSENT= 'INITIATE_REMOVE_CONSENT'
+export const CONSENT_REMOVAL_ACKNOWLEDGED = 'CONSENT_REMOVAL_ACKNOWLEDGED'
+export const CONSENT_REMOVAL_REJECTED = 'CONSENT_REMOVAL_REJECTED'
+
+export const removeProviderConsent = (providerId) => dispatch => {
+    dispatch({ type: INITIATE_REMOVE_CONSENT })
+    axios
+      //res.data.payload?
+      .delete('http://localhost:5000/api/patients/:id/consent', providerId)
+      .then(res => dispatch({ type: CONSENT_REMOVAL_ACKNOWLEDGED, payload: res.data.payload }))
+      .catch(err => dispatch({ type: CONSENT_REMOVAL_REJECTED, payload: err }));
 }
