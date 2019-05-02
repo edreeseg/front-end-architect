@@ -10,6 +10,7 @@ class MedicalRegistrationView extends React.Component {
       credentials: {
         fullName: "",
         username: "",
+        email: "",
         password: "",
         //verification:"", ex. licensure, 
         //providerID:""
@@ -36,8 +37,6 @@ class MedicalRegistrationView extends React.Component {
           // })
     };
   
-    
-  
     render() {
       return (
         <MedicalRegistrationWrapper>
@@ -54,11 +53,10 @@ class MedicalRegistrationView extends React.Component {
               className = "input"
               type = "text"
               onChange={this.handleInput}
-              placeholder="Full Name"
+              placeholder="Provider Name"
               value={this.state.fullName}
-              name="fullName"
+              name="providerName"
             />
-                   
             <input
               className = "input"
               type = "text"
@@ -66,6 +64,14 @@ class MedicalRegistrationView extends React.Component {
               placeholder="Username"
               value={this.state.username}
               name="username"
+            />
+            <input
+              className = "input"
+              type = "text"
+              onChange={this.handleInput}
+              placeholder="Email Address"
+              value={this.state.email}
+              name="email"
             />
             <input
               className = "input"

@@ -58,7 +58,6 @@ class PatientRegistrationView extends React.Component {
               value={this.state.fullName}
               name="fullName"
             />
-                   
             <input
               className = "input"
               type = "text"
@@ -66,6 +65,14 @@ class PatientRegistrationView extends React.Component {
               placeholder="Username"
               value={this.state.username}
               name="username"
+            />
+            <input
+              className = "input"
+              type = "text"
+              onChange={this.handleInput}
+              placeholder="Email Address"
+              value={this.state.email}
+              name="email"
             />
             <input
               className = "input"
