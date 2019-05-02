@@ -9,7 +9,7 @@ import MedicalRegistrationView from './components/registration/MedicalRegistrati
 import PatientRegistrationView from "./components/registration/PatientRegistrationView";
 import PatientContainer from "./components/UserViewPages/PatientPage/PatientContainer"
 import UserPrivateRoute from "./components/UserPrivateRoute";
-
+import DocHomepage from "./components/UserViewPages/DocPage/DocHompage";
 
 
 class App extends Component {
@@ -22,6 +22,7 @@ class App extends Component {
           <Route path="/register-provider" exact component={MedicalRegistrationView} />
           <Route path = "/register-patient" exact component={PatientRegistrationView} />
           <UserPrivateRoute path= "/patienthub" exact component={PatientContainer} />
+          <Route path="/doctorhub" exact component={DocHomepage} />
 
         </div>
       </Router>
