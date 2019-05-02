@@ -17,9 +17,9 @@ class GrantAccessView extends React.Component {
   }
 
   render() {
-    if (this.props.fetchingProviders === true) {
-      <h3>Loading our list of providers...</h3>
-    }
+    // if (this.props.fetchingProviders) {
+    //   <h3>Loading our list of providers...</h3>
+    // }
     return (
       <div>
         <List list={this.props.list} />

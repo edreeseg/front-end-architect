@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Login from "./components/Login/Login";
 import MedicalRegistrationView from './components/registration/MedicalRegistrationView';
 import PatientRegistrationView from "./components/registration/PatientRegistrationView";
-
+import GrantAccessView from "./components/GrantAccess/GrantAccessView"
 
 
 class App extends Component {
@@ -19,6 +19,7 @@ class App extends Component {
           <Route path="/login" exact component={Login} />
           <Route path="/register-provider" exact component={MedicalRegistrationView} />
           <Route path = "/register-patient" exact component={PatientRegistrationView} />
+          <Route path = "/grant-access" exact component={GrantAccessView} />
         </div>
       </Router>
     );
