@@ -9,7 +9,9 @@ export const login = creds => dispatch => {
     return axios
       .post("https://infinite-castle-77802.herokuapp.com/login", creds)
       .then(res => {
-        localStorage.setItem("token", res.data.payload);
+        localStorage.setItem("token", `Bearer ${res.data.token}`)
+
+        console.log(res.data.payload)
         dispatch({ type: LOGIN_RESOLVED });
       })
       .catch(err => {
