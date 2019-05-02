@@ -50,11 +50,12 @@ export class AddPatientView extends React.Component {
       });
   };
 
+  isFieldFilled = fieldName => {
+    return Boolean(this.state[fieldName]);
+  };
+
   showErrorMessage = fieldName => {
-    const isFieldFilled = fieldName => {
-      return Boolean(this.state[fieldName]);
-    };
-    return this.state.blurred[fieldName] && !isFieldFilled(fieldName);
+    return this.state.blurred[fieldName] && !this.isFieldFilled(fieldName);
   };
 
   isDateValid = () => {
@@ -64,7 +65,19 @@ export class AddPatientView extends React.Component {
     return selectedDate <= today;
   };
 
+  disableSubmitButton = () => {
+    // Returns booleans based if fields are filled in and date is valid
+    return !(
+      this.isFieldFilled("firstName") &&
+      this.isFieldFilled("lastName") &&
+      this.isDateValid()
+    );
+  };
+
   setBlur = event => {
+    // Sets in state if an element is blurred (i.e. user removes focus from
+    // element)
+
     // Reference for below:
     //https://stackoverflow.com/a/44708693
     const elementName = event.target.name;
@@ -118,7 +131,7 @@ export class AddPatientView extends React.Component {
             // would update state
           />
           <div>{!this.isDateValid() ? "Date invalid!" : null}</div>
-          <button type="submit">Submit</button>
+          <button disabled={this.disableSubmitButton()} type="submit">Submit</button>
         </form>
       </div>
     );
