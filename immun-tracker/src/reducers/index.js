@@ -1,11 +1,10 @@
-// import {
-//     LOGIN_START,
-//     LOGIN_RESOLVED,
-//     FETCH_DATA_START,
-//     FETCH_DATA_SUCCESS,
-//     FETCH_DATA_FAILURE
-
-//   } from "../actions";
+import {
+    LOGIN_START,
+    LOGIN_RESOLVED,
+    FETCH_DATA_START,
+    FETCH_DATA_SUCCESS,
+    FETCH_DATA_FAILURE,
+  } from "../actions/actions";
 
 // Registration Actions
 import {
@@ -28,24 +27,25 @@ const initialState = {
   userListMedical: [],
   addingMedicalUser: false,
   userListPatient: [],
-  addingPatient: false
+  addingPatient: false,
+  logout: false
 };
 
 const friendsReducer = (state = initialState, action) => {
   switch (action.type) {
     /* --- Login Actions --- */
-    //     case LOGIN_START: {
-    //         return {
-    //           ...state,
-    //           isLoggingIn: true
-    //         };
-    //       }
-    //       case LOGIN_RESOLVED: {
-    //         return {
-    //           ...state,
-    //           isLoggingIn: false
-    //         };
-    //       }
+        case LOGIN_START: {
+            return {
+              ...state,
+              isLoggingIn: true
+            };
+          }
+          case LOGIN_RESOLVED: {
+            return {
+              ...state,
+              isLoggingIn: false
+            };
+          }
     /* --- Registration Actions --- */
     case ACCOUNTCREATE_START:
       return {
@@ -82,9 +82,11 @@ const friendsReducer = (state = initialState, action) => {
         addingPatient: false,
         error: action.payload
       };
+
     default:
       return state;
   }
+
 };
 
 export default friendsReducer;
