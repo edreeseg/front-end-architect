@@ -4,34 +4,43 @@ import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 
-export const AddPatientView = () => {
-    const [state, setState] = useState({
+export class AddPatientView extends React.Component {
+    state = {
         firstName: "",
         lastName: "",
-        birthDate: new Date()
-    });
+        birthDate: new Date(),
+    }
 
-    const [birthDate, setBirthDate] = useState(new Date());
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
+    changeDate = date => {
+        this.setState({
+            birthDate: date
+        });
+    }
 
-    const onChangeFirstName = (event) => setFirstName(event.target.value);
-    const onChangeLastName = (event) => setLastName(event.target.value);
-    const changeDate = date => setBirthDate(date);
+    handleInputChange = event => {
+        this.setState({
+            [event.target.name]: event.target.value
+        });
+    }
 
-    return (
-        <div>
-            <input
-                name="firstName"
-                value={firstName}
-                onChange={onChangeFirstName}
-            />
-            <input
-                name="lastName"
-                value={lastName}
-                onChange={onChangeLastName}
-            />
-            <DatePicker selected={birthDate} onChange={changeDate} />
-        </div>
-    );
-};
+    render() {
+        const {firstName, lastName, birthDate } = this.state;
+
+        return (
+            <div>
+                <input
+                    name="firstName"
+                    value={firstName}
+                    onChange={this.handleInputChange}
+                />
+                <input
+                    name="lastName"
+                    value={lastName}
+                    onChange={this.handleInputChange}
+                />
+                <DatePicker selected={birthDate} onChange={this.changeDate} />
+            </div>
+        );
+    }    
+}
+
