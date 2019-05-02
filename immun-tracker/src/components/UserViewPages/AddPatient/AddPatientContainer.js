@@ -12,8 +12,8 @@ export class AddPatientView extends React.Component {
     lastName: "",
     birthDate: new Date(),
     blurred: {
-        firstName: false,
-        lastName: false
+      firstName: false,
+      lastName: false
     }
   };
 
@@ -55,24 +55,31 @@ export class AddPatientView extends React.Component {
   };
 
   showErrorMessage = fieldName => {
-      return this.state.blurred[fieldName] && !this.isFieldFilled(fieldName);
-  }
+    return this.state.blurred[fieldName] && !this.isFieldFilled(fieldName);
+  };
 
-  setBlur = (event) => {
-      // Reference for below:
-      //https://stackoverflow.com/a/44708693
-      const elementName = event.target.name;
+  isDateValid = () => {
+    const today = new Date().getTime();
+    const selectedDate = this.state.birthDate.getTime();
+    // Date is valid if it's today or in the past (future dates are not OK)
+    return selectedDate <= today;
+  };
 
-      const stateUpdater = (prevState) => ({
-          ...prevState,
-          blurred: {
-              ...prevState.blurred,
-              [elementName]: true
-          }
-      });
+  setBlur = event => {
+    // Reference for below:
+    //https://stackoverflow.com/a/44708693
+    const elementName = event.target.name;
 
-      this.setState(stateUpdater);
-  }
+    const stateUpdater = prevState => ({
+      ...prevState,
+      blurred: {
+        ...prevState.blurred,
+        [elementName]: true
+      }
+    });
+
+    this.setState(stateUpdater);
+  };
 
   render() {
     const { firstName, lastName, birthDate } = this.state;
@@ -88,7 +95,9 @@ export class AddPatientView extends React.Component {
             onBlur={this.setBlur}
           />
           <div>
-            {this.showErrorMessage("firstName") ? "First Name is required!" : null}
+            {this.showErrorMessage("firstName")
+              ? "First Name is required!"
+              : null}
           </div>
           <label htmlFor="lastName">Last Name</label>
           <input
@@ -98,7 +107,9 @@ export class AddPatientView extends React.Component {
             onBlur={this.setBlur}
           />
           <div>
-            {this.showErrorMessage("lastName") ? "Last Name is required!" : null}
+            {this.showErrorMessage("lastName")
+              ? "Last Name is required!"
+              : null}
           </div>
           <label htmlFor="birthDate">Birth Date</label>
           <DatePicker
@@ -107,6 +118,7 @@ export class AddPatientView extends React.Component {
             onChange={this.changeDate} // accepts onChange function which
             // would update state
           />
+          <div>{!this.isDateValid() ? "Date invalid!" : null}</div>
           <button type="submit">Submit</button>
         </form>
       </div>
