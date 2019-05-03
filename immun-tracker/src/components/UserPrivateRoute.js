@@ -1,6 +1,5 @@
-import React from "react";
-import { Route, Redirect } from "react-router-dom";
-
+import React from 'react';
+import { Route, Redirect } from 'react-router-dom';
 
 // Requires:
 // 1. It has the API as <Route />
@@ -12,11 +11,11 @@ const UserPrivateRoute = ({ component: Component, ...therest }) => {
   return (
     <Route
       {...therest}
-      render={() => {
-        if (localStorage.getItem("token")) {
-          return <Component />;
+      render={props => {
+        if (localStorage.getItem('token')) {
+          return <Component {...props} />;
         } else {
-          console.log("redirecting!!!!");
+          console.log('redirecting!!!!');
           return <Redirect to="/login" />;
         }
       }}

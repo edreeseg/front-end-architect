@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import PatientNav from "./PatientNav";
-import Footer from './PatientFooter'
-import { getData } from "../../../actions/actions";
+import React, { Component } from 'react';
+import PatientNav from './PatientNav';
+import Footer from './PatientFooter';
+import { getData } from '../../../actions/actions';
 
 //Redux
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
 import {
   Jumbotron,
@@ -14,25 +14,29 @@ import {
   CardText,
   CardBody,
   CardTitle,
-  CardSubtitle
-} from "reactstrap";
+  CardSubtitle,
+} from 'reactstrap';
 
-import { PatientWrapper } from './PNavbarWrapper'
-
+import { PatientWrapper } from './PNavbarWrapper';
 
 class PatientHome extends Component {
-
   componentDidMount() {
     this.props.getData();
   }
-
-
+  componentDidUpdate(prevProps, prevState) {
+    console.log('PROPS ', this.props);
+    if (prevProps.user === null && this.props.user) {
+      if (this.props.user.providerId) this.props.history.push('/doctorhub');
+    }
+  }
   render() {
     return (
       <PatientWrapper>
         <PatientNav />
         <Jumbotron>
-          <h1 className="display-3">Hello, {this.props.user.username}</h1>
+          <h1 className="display-3">
+            Hello{this.props.user ? `, ${this.props.user.username}` : '!'}
+          </h1>
           <p className="lead">
             Welcome to the Immunization Tracker’s patient hub. <br />
             Here you will be able to get up to date with news of immunizations
@@ -60,8 +64,8 @@ class PatientHome extends Component {
                 The outbreak is now the worst in decades. Children under age 5
                 account for about half of the cases.
               </CardText>
-              <form  action="https://www.nytimes.com/2019/04/29/health/measles-outbreak-cdc.html">
-                <input className='button' type="submit" value="Learn More" />
+              <form action="https://www.nytimes.com/2019/04/29/health/measles-outbreak-cdc.html">
+                <input className="button" type="submit" value="Learn More" />
               </form>
             </CardBody>
           </Card>
@@ -80,8 +84,8 @@ class PatientHome extends Component {
                 preventable diseases like the measles, which is at a high in the
                 state.
               </CardText>
-              <form  action="https://patch.com/michigan/across-mi/michigan-promotes-immunizations-week-measles-outbreak-soars">
-                <input className='button' type="submit" value="Learn More" />
+              <form action="https://patch.com/michigan/across-mi/michigan-promotes-immunizations-week-measles-outbreak-soars">
+                <input className="button" type="submit" value="Learn More" />
               </form>
             </CardBody>
           </Card>
@@ -99,27 +103,26 @@ class PatientHome extends Component {
                 As Artificial Intelligence Moves Into Medicine, The Human Touch
                 Could Be A Casualty
               </CardText>
-              <form  action="https://www.npr.org/sections/health-shots/2019/04/30/718413798/as-artificial-intelligence-moves-into-medicine-the-human-touch-could-be-a-casual">
-                <input className='button' type="submit" value="Learn More" />
+              <form action="https://www.npr.org/sections/health-shots/2019/04/30/718413798/as-artificial-intelligence-moves-into-medicine-the-human-touch-could-be-a-casual">
+                <input className="button" type="submit" value="Learn More" />
               </form>
             </CardBody>
           </Card>
         </div>
-        <Footer/>
+        <Footer />
       </PatientWrapper>
     );
   }
 }
 
-
-const mapStateToProps = ({user,fetchingData}) => {
+const mapStateToProps = ({ user, fetchingData }) => {
   return {
     user,
-    fetchingData
+    fetchingData,
   };
 };
 
 export default connect(
   mapStateToProps,
-    {getData}
+  { getData }
 )(PatientHome);

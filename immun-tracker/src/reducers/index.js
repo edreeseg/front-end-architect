@@ -1,25 +1,24 @@
 import {
-    LOGIN_START,
-    LOGIN_RESOLVED,
-    FETCH_DATA_START,
-    FETCH_DATA_SUCCESS,
-  
-  } from "../actions/actions";
+  LOGIN_START,
+  LOGIN_RESOLVED,
+  LOGOUT,
+  FETCH_DATA_START,
+  FETCH_DATA_SUCCESS,
+} from '../actions/actions';
 
 // Registration Actions
 import {
   ACCOUNTCREATE_START,
   ACCOUNTCREATE_SUCCESS,
   ACCOUNTCREATE_FAILURE,
-
   PATIENTACCOUNTCREATE_START,
   PATIENTACCOUNTCREATE_SUCCESS,
-  PATIENTACCOUNTCREATE_FAILURE
-} from "../actions/registrationActions";
+  PATIENTACCOUNTCREATE_FAILURE,
+} from '../actions/registrationActions';
 
 const initialState = {
   // Common
-  error: "",
+  error: '',
   // From login
   isloggingIn: false,
   fetchingData: false,
@@ -29,79 +28,84 @@ const initialState = {
   userListPatient: [],
   addingPatient: false,
   logout: false,
-  user:[]
+  user: null,
 };
 
 const friendsReducer = (state = initialState, action) => {
   switch (action.type) {
     /* --- Login Actions --- */
-        case LOGIN_START: {
-            return {
-              ...state,
-              isLoggingIn: true
-            };
-          }
-          case LOGIN_RESOLVED: {
-            return {
-              ...state,
-              isLoggingIn: false
-            };
-          }
+    case LOGIN_START: {
+      return {
+        ...state,
+        isLoggingIn: true,
+      };
+    }
+    case LOGIN_RESOLVED: {
+      return {
+        ...state,
+        isLoggingIn: false,
+      };
+    }
+    case LOGOUT: {
+      return {
+        ...state,
+        user: null,
+      };
+    }
     /* --- Registration Actions --- */
     case ACCOUNTCREATE_START:
       return {
         ...state,
-        addingMedicalUser: true
+        addingMedicalUser: true,
       };
     case ACCOUNTCREATE_SUCCESS:
       return {
         ...state,
         addingMedicalUser: false,
-        userListMedical: [...action.payload]
+        userListMedical: [...action.payload],
       };
     case ACCOUNTCREATE_FAILURE:
       return {
         ...state,
         addingMedicalUser: false,
-        error: action.payload
+        error: action.payload,
       };
 
-      case PATIENTACCOUNTCREATE_START:
+    case PATIENTACCOUNTCREATE_START:
       return {
         ...state,
-        addingPatient: true
+        addingPatient: true,
       };
     case PATIENTACCOUNTCREATE_SUCCESS:
       return {
         ...state,
         addingPatient: false,
-        userListPatient: [...action.payload]
+        userListPatient: [...action.payload],
       };
     case PATIENTACCOUNTCREATE_FAILURE:
       return {
         ...state,
         addingPatient: false,
-        error: action.payload
+        error: action.payload,
       };
-      case FETCH_DATA_START:
+    case FETCH_DATA_START:
       return {
         ...state,
-        error: "",
-        fetchingData: true
+        error: '',
+        fetchingData: true,
       };
-      case FETCH_DATA_SUCCESS:
+    case FETCH_DATA_SUCCESS:
       console.log(action.payload);
       return {
         ...state,
-        error: "",
+        error: '',
         fetchingData: false,
-        user: action.payload
-      }
+        user: action.payload,
+      };
 
     default:
       return state;
   }
-
 };
 
 export default friendsReducer;

@@ -1,47 +1,54 @@
-import React from "react";
+import React from 'react';
 
 //Redux
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
 //React Router
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 // import Loader from "react-loader-spinner";
-import { login } from  '../../actions/actions'
+import { login } from '../../actions/actions';
 
 //Styled Component
-import { LoginWrapper } from "./LoginWrapper";
+import { LoginWrapper } from './LoginWrapper';
 
 //Font Awesome
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUserLock } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserLock } from '@fortawesome/free-solid-svg-icons';
 
 class Login extends React.Component {
   state = {
     credentials: {
-      username: "",
-      password: "",
-      
+      username: '',
+      password: '',
     },
-    submitted: false
+    submitted: false,
   };
-
+  componentDidMount() {
+    console.log('USER ', this.props.user);
+    // Check if user is already logged in, and redirect to appropriate route
+    if (this.props.user) {
+      this.props.user.providerId
+        ? this.props.history.push('/doctorhub')
+        : this.props.history.push('/patienthub');
+    }
+  }
   handleChange = e => {
     this.setState({
       credentials: {
         ...this.state.credentials,
-        [e.target.name]: e.target.value
-      }
+        [e.target.name]: e.target.value,
+      },
     });
   };
 
   handleLogin = e => {
     e.preventDefault();
     this.setState({ submitted: true });
-    if(this.state.credentials.username && this.state.credentials.password ){
-    this.props
-      .login(this.state.credentials)
-      .then(() => this.props.history.push("/patienthub"));
+    if (this.state.credentials.username && this.state.credentials.password) {
+      this.props
+        .login(this.state.credentials)
+        .then(() => this.props.history.push('/patienthub'));
     }
   };
 
@@ -50,7 +57,7 @@ class Login extends React.Component {
       <LoginWrapper>
         <div className="main">
           <p className="sign">
-            {" "}
+            {' '}
             <FontAwesomeIcon icon={faUserLock} />
           </p>
           <form onSubmit={this.handleLogin}>
@@ -99,11 +106,11 @@ class Login extends React.Component {
 const mapStateToProps = state => {
   return {
     isLoggingIn: state.isLoggingIn,
-    
+    user: state.user,
   };
 };
 
 export default connect(
   mapStateToProps,
-    { login }
+  { login }
 )(Login);
