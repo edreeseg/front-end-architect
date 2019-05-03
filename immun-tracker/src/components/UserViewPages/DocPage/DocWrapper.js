@@ -10,6 +10,7 @@ export const DocNavbarWrapper = styled.div`
       .logo{
           color: #0077c2;
           text-decoration: none;
+          font-size: 1.25rem;
       }
       .mr-2{
           background:#ffd740;
@@ -17,6 +18,7 @@ export const DocNavbarWrapper = styled.div`
       }
       .link{
         color: #0077c2;
+        
         text-decoration: none;
       }
   }

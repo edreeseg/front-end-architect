@@ -3,7 +3,7 @@ import {
     LOGIN_RESOLVED,
     FETCH_DATA_START,
     FETCH_DATA_SUCCESS,
-    FETCH_DATA_FAILURE,
+  
   } from "../actions/actions";
 
 // Registration Actions
@@ -28,7 +28,8 @@ const initialState = {
   addingMedicalUser: false,
   userListPatient: [],
   addingPatient: false,
-  logout: false
+  logout: false,
+  user:[]
 };
 
 const friendsReducer = (state = initialState, action) => {
@@ -82,6 +83,20 @@ const friendsReducer = (state = initialState, action) => {
         addingPatient: false,
         error: action.payload
       };
+      case FETCH_DATA_START:
+      return {
+        ...state,
+        error: "",
+        fetchingData: true
+      };
+      case FETCH_DATA_SUCCESS:
+      console.log(action.payload);
+      return {
+        ...state,
+        error: "",
+        fetchingData: false,
+        user: action.payload
+      }
 
     default:
       return state;

@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
+
 //Bootstrap
 import {
   Collapse,
   Navbar,
   NavbarToggler,
-  NavbarBrand,
   Nav,
   NavItem,
 } from "reactstrap";
@@ -40,12 +39,12 @@ class DocNav extends Component {
     return(
      <DocNavbarWrapper>
     <Navbar light>
-      <NavbarBrand  className="mr-auto"><Link to="/doctorhub" className='logo'>Immunization Tracker  <FontAwesomeIcon icon={faSyringe} /></Link></NavbarBrand>
+      <Link to="/doctorhub" className='logo mr-auto'>Immunization Tracker  <FontAwesomeIcon icon={faSyringe} /></Link>
       <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
       <Collapse isOpen={!this.state.collapsed} navbar>
         <Nav navbar>
           <NavItem>
-            <Link className='link' href="/components/">View Patients</Link>
+            <Link className='link' to="/components/">View Patients</Link>
           </NavItem>
           <NavItem>
             <Link className='link' onClick={this.logout} to='/login'> Logout </Link>
