@@ -3,6 +3,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { PatientRegistrationWrapper } from "./PatientRegistrationWrapper";
 //import { createPatientAccount } from '../../actions/registrationActions'
+import { Link } from "react-router-dom"
 
 class PatientRegistrationView extends React.Component {
     state = {
@@ -92,11 +93,11 @@ class PatientRegistrationView extends React.Component {
             
             <div className = "alreadyRegistered">
               <p>Already Registered? </p>
-              <a className="redirectLogin" href="#"> Login</a>
+              <a className="redirectLogin" href="/"> Login</a>
             </div>
             <div className = "alreadyRegistered">
               <p>Are you a medical provider? </p>
-              <a className="redirectLogin" href="#"> Create a provider account</a>
+              <Link className="redirectLogin" to="/register-provider"> Create a provider account</Link>
             </div>
         </div>
         </PatientRegistrationWrapper>

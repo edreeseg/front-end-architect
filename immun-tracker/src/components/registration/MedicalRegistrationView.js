@@ -95,7 +95,7 @@ class MedicalRegistrationView extends React.Component {
             </div>
             <div className = "alreadyRegistered">
               <p>New Patient? </p>
-              <a className="redirectLogin" href="#"> Create a patient account</a>
+              <Link className="redirectLogin" to="/register-patient"> Create a patient account</Link>
             </div>
         </div>
         </MedicalRegistrationWrapper>

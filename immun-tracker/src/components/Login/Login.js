@@ -20,7 +20,8 @@ class Login extends React.Component {
   state = {
     credentials: {
       username: "",
-      password: ""
+      password: "",
+      
     },
     submitted: false
   };
@@ -37,10 +38,10 @@ class Login extends React.Component {
   handleLogin = e => {
     e.preventDefault();
     this.setState({ submitted: true });
-    if(this.state.credentials.username && this.state.credentials.password){
+    if(this.state.credentials.username && this.state.credentials.password ){
     this.props
       .login(this.state.credentials)
-      .then(() => this.props.history.push("/protected"));
+      .then(() => this.props.history.push("/patienthub"));
     }
   };
 
@@ -82,10 +83,10 @@ class Login extends React.Component {
             <button className="submit">Log in</button>
           </form>
           <div className="forgot">
-            <a className="helpLink" href="#">
+            <a className="helpLink" href="/">
               Forgot Password?
             </a>
-            <Link className="helpLink" href="#">
+            <Link className="helpLink" to="/register-patient">
               Sign Up
             </Link>
           </div>
@@ -97,7 +98,8 @@ class Login extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    isLoggingIn: state.isLoggingIn
+    isLoggingIn: state.isLoggingIn,
+    
   };
 };
 

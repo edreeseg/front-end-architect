@@ -1,11 +1,10 @@
-// import {
-//     LOGIN_START,
-//     LOGIN_RESOLVED,
-//     FETCH_DATA_START,
-//     FETCH_DATA_SUCCESS,
-//     FETCH_DATA_FAILURE
-
-//   } from "../actions";
+import {
+    LOGIN_START,
+    LOGIN_RESOLVED,
+    FETCH_DATA_START,
+    FETCH_DATA_SUCCESS,
+  
+  } from "../actions/actions";
 
 // Registration Actions
 import {
@@ -42,29 +41,33 @@ const initialState = {
   addingMedicalUser: false,
   userListPatient: [],
   addingPatient: false,
+
   // from granting access
   providerList:[],
   fetchingProviders: false,
   authorizedProviderList:[],
   givingAuthorization: false,
   removingAuthorization: false,
+  logout: false,
+  user:[]
+
 };
 
 const friendsReducer = (state = initialState, action) => {
   switch (action.type) {
     /* --- Login Actions --- */
-    //     case LOGIN_START: {
-    //         return {
-    //           ...state,
-    //           isLoggingIn: true
-    //         };
-    //       }
-    //       case LOGIN_RESOLVED: {
-    //         return {
-    //           ...state,
-    //           isLoggingIn: false
-    //         };
-    //       }
+        case LOGIN_START: {
+            return {
+              ...state,
+              isLoggingIn: true
+            };
+          }
+          case LOGIN_RESOLVED: {
+            return {
+              ...state,
+              isLoggingIn: false
+            };
+          }
     /* --- Registration Actions --- */
     case ACCOUNTCREATE_START:
       return {
@@ -101,6 +104,7 @@ const friendsReducer = (state = initialState, action) => {
         addingPatient: false,
         error: action.payload
       };
+
 //~~~~~~~~~~~~~~~~Granting Access ~~~~~~~~~~~~~~~~~~~~~~~~~~
     //getting list of providers to give authorizaton to
     
@@ -164,9 +168,27 @@ const friendsReducer = (state = initialState, action) => {
       removingAuthorization: false,
       error: action.payload
     };
+
+      case FETCH_DATA_START:
+      return {
+        ...state,
+        error: "",
+        fetchingData: true
+      };
+      case FETCH_DATA_SUCCESS:
+      console.log(action.payload);
+      return {
+        ...state,
+        error: "",
+        fetchingData: false,
+        user: action.payload
+      }
+
+
     default:
       return state;
   }
+
 };
 
 export default friendsReducer;
