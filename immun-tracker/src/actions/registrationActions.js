@@ -13,7 +13,7 @@ export const createProviderAccount = (credentials) => dispatch => {
     axios
       //update with correct url
       .post('https://infinite-castle-77802.herokuapp.com/register', credentials)
-      .then(res => dispatch({ type: ACCOUNTCREATE_SUCCESS, payload: res.data.payload }))
+      .then(res => dispatch({ type: ACCOUNTCREATE_SUCCESS, payload: res.data }))
       .catch(err => dispatch({ type: ACCOUNTCREATE_FAILURE, payload: err }));
 }
 
@@ -22,6 +22,6 @@ export const createPatientAccount = (credentials) => dispatch => {
   axios
     // update with correct url
     .post('https://infinite-castle-77802.herokuapp.com/register', credentials)
-    .then(res => dispatch({ type: PATIENTACCOUNTCREATE_SUCCESS, payload: res.data.payload }))
+    .then(res => dispatch({ type: PATIENTACCOUNTCREATE_SUCCESS, payload: res.data }))
     .catch(err => dispatch({ type: PATIENTACCOUNTCREATE_FAILURE, payload: err }));
 }

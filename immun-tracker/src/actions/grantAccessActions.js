@@ -11,7 +11,7 @@ export const fetchProviderList = () => dispatch => {
     axios
       //res.data.payload??
       .get("https://infinite-castle-77802.herokuapp.com/providers")
-      .then(res => dispatch({ type: GETPROVIDERLIST_SUCCESS, payload: res.data.payload }))
+      .then(res => dispatch({ type: GETPROVIDERLIST_SUCCESS, payload: res.data.providers }))
       .catch(err => dispatch({ type: GETPROVIDERLIST_FAILURE, payload: err }));
 }
 
@@ -26,7 +26,7 @@ export const giveProviderConsent = (providerId) => dispatch => {
     axios
       //res.data.payload???
       .post(`https://infinite-castle-77802.herokuapp.com/patients/${providerId}/consent`, providerId)
-      .then(res => dispatch({ type: CONSENT_ACKNOWLEDGED, payload: res.data.payload }))
+      .then(res => dispatch({ type: CONSENT_ACKNOWLEDGED, payload: res.data.success }))
       .catch(err => dispatch({ type: CONSENT_REJECTED, payload: err }));
 }
 
@@ -41,6 +41,6 @@ export const removeProviderConsent = (providerId) => dispatch => {
     axios
       //res.data.payload?
       .delete(`https://infinite-castle-77802.herokuapp.com/patients/${providerId}/consent`)
-      .then(res => dispatch({ type: CONSENT_REMOVAL_ACKNOWLEDGED, payload: res.data.payload }))
+      .then(res => dispatch({ type: CONSENT_REMOVAL_ACKNOWLEDGED, payload: res.data.providers }))
       .catch(err => dispatch({ type: CONSENT_REMOVAL_REJECTED, payload: err }));
 }
